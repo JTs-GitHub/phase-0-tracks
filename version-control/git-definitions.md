@@ -1,4 +1,7 @@
-# Git Definitions
+# adding teacher tag
+
+
+## Git Definitions
 
 **Instructions: ** Define each of the following Git concepts.
 
@@ -18,3 +21,4 @@ Version Control is a method of controlling the changes to a project.  It is usef
 
 * What is a merge conflict?
     * a merge conflict is any of a variety of synchronization steps (commits in gig) that conflict with other changes to the project.
+
