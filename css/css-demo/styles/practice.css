@@ -13,3 +13,7 @@
 .list-text {
   font-size: .8em;
 }
+
+ul>li {
+  color: purple;
+}
