@@ -1,0 +1,18 @@
+#octopus {
+  position: fixed;
+  margin-top: 150px;
+  margin-left: 150px;
+ }
+
+#hat {
+  position: fixed;
+  margin-top: 75px;
+  margin-left: 135px;
+}
+
+#glasses {
+  position: fixed;
+  -webkit-transform: rotate(-1deg);
+  margin-left: 193px;
+  margin-top: 248px;
+}
