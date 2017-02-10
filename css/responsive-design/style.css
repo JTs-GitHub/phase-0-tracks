@@ -46,3 +46,25 @@ figcaption {
   font-style: italic;
   text-align: right;
 }
+
+/* preserved snippet for future reference
+@media screen and (max-width: 500px) {
+  h1 {
+    background-color: hotpink;
+  }
+}
+*/
+
+/*media query to shrink h1 font size at max-width */
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  p {
+    font-size: 8px;
+  }
+}
+
