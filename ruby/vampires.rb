@@ -58,6 +58,17 @@ while num_of_employees > 0
       puts vampire_guess
   end
 
+#adding in allergy detection loop
+  puts "Please list any allergies (one per line) and then type 'done' when finished."
+  allergy = nil
+  until allergy == "done" or allergy == "sunshine"
+    allergy = gets.chomp
+    if allergy == "sunshine"
+      vampire_guess = "Probably a vampire"
+    end
+  end
+
+
   if age_matches == false
     if (garlic_bread_eater == false) && (insurance == false)
     vampire_guess = "Almost CERTAINLY a vampire!"
@@ -65,13 +76,11 @@ while num_of_employees > 0
     end
   end
 
-  if (inputed_name == "Drake Cula") 
-    vampire_guess = "Definitely a VAMPIRE!" 
-  end
-
-  if (inputed_name == "Tu Fang")
+  if (inputed_name == "Drake Cula") || (inputed_name == "Tu Fang")
     vampire_guess = "Definitely a VAMPIRE!!"
   end
+
+
 
   puts "Current value of vampire guess is ... #{vampire_guess}"
   num_of_employees = num_of_employees - 1
