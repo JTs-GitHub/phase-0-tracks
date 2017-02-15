@@ -1,4 +1,4 @@
-#Release 3: Interview with the Vampire
+#Release 5: Interview with the Vampire
 
 puts "How many employees to enter during this session?"
 num_of_employees = gets.chomp.to_i
@@ -85,3 +85,4 @@ while num_of_employees > 0
   puts "Current value of vampire guess is ... #{vampire_guess}"
   num_of_employees = num_of_employees - 1
 end
+puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
