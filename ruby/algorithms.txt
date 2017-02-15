@@ -1,0 +1,15 @@
+# Robot elevator algorithm   (release 0)
+
+-Find out what floor currently on
+-Find out what floor robot wants to get to
+-If floors are not the same determine if going up or down
+  -find location of elevator
+  -go to elevator and check status of elevator (currently going up, down)
+  -Press the correct button to call the elevator
+  -wait for the elevator and enter when it arrives and exiters have a chance to exit.
+  -find the button corresponding to the desired floor
+  -press the button
+  -monitor the floors until your desired floor is achieved
+  -exit the elevator.
+
+--------------------------------------
