@@ -1,0 +1,37 @@
+# Robot elevator algorithm   (release 0)
+
+-Find out what floor currently on
+-Find out what floor robot wants to get to
+-If floors are not the same determine if going up or down
+  -find location of elevator
+  -go to elevator and check status of elevator (currently going up, down)
+  -Press the correct button to call the elevator
+  -wait for the elevator and enter when it arrives and exiters have a chance to exit.
+  -find the button corresponding to the desired floor
+  -press the button
+  -monitor the floors until your desired floor is achieved
+  -exit the elevator.
+
+--------------------------------------
+
+# morning routine algorithm  (release 1)
+
+-Sleep until alarm goes off.
+-snooze alarm
+-If schoolday, get dressed and wake up the kids
+-Repeat for <= 3 cycles: 
+  -set 5 minute timer
+  -check newsfeeds and bookmark interesting articles to read after dropping off kids.
+  -if any kids still snoozing, wake them up again.
+
+-at 7:20  make breakfast and lunches unless mom already doing one or both
+-at 7:30, yell at the kids that its 7:30 and that their breakfast is getting cold.
+-Drive kids to school when they're read.
+-at 7:40, if kids still not ready, get ready to go postal with verbal threats.
+-at 7:45, if kids still not ready, initiate You're Grounded protocol.
+-Return home from driving kids to school.
+-make coffee and read bookmarked articles.
+-do DBC
+<end of morning>
+
+
