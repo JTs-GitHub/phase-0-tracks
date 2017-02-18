@@ -26,42 +26,56 @@ DECRYPT pseudocode:
 =end
 
 
+=begin 
+rewriting methods to return strings.  previously, I was printing encrypt/decrypt strings on the fly,
+and not returning a different string.  Now, the methods can be nested  as in "puts decrypt(encrypt("swordfish")).
+In that example, "swordfish" encryption returns the encrypted string, which is then able to be the input to the 
+decrypt method. 
+
+=end 
 
 def encrypt(string_to_encrypt)
   alphabet = "abcdefghijklmnopqrstuvwxyz"
-  alphabet_index = 0   # integer var used to store alphabet's index for given letter.
-  offset = 0   # "offset" is replacing "index" var because there were too many "index" vars and methods. 
-  
-  print "#{string_to_encrypt} becomes "
+  offset = 0
+  newstring = ""   #create new string for explicit return
+  #find index of the letter in the string alphabet
   while offset < string_to_encrypt.length
     alphabet_index = alphabet.index(string_to_encrypt[offset])
-    if alphabet_index == 25          # adding condition check if string index == 25  (i.e. "z"), for edge case
+    if alphabet_index == 25
       alphabet_index = -1
     end
-    print alphabet[alphabet_index + 1]
+    # print alphabet[alphabet_index + 1]
+     newstring[offset] = alphabet[alphabet_index + 1]
     offset += 1
   end
-  puts ""
+return newstring   #using explicit return, and full new string to allow nested call
+print newstring
 end
+
 
 
 def decrypt(string_to_decrypt)
   alphabet = "abcdefghijklmnopqrstuvwxyz"
-  index = 0
-  alphabet_index = 0
-  print "#{string_to_decrypt} becomes "
-  while index < string_to_decrypt.length
-    alphabet_index = alphabet.index(string_to_decrypt[index])
-    print alphabet[alphabet_index -1]
-    index += 1
+  offset = 0
+  newstring = ""    #creating new string for explicit return value
+  #find index of the letter in the string alphabet
+  while offset < string_to_decrypt.length
+    alphabet_index = alphabet.index(string_to_decrypt[offset])
+    #print alphabet[alphabet_index - 1]
+    newstring[offset] = alphabet[alphabet_index - 1]
+    offset += 1
   end
-  puts ""
+#puts "#{string_to_decrypt} is now decrypted to #{newstring}"
+return newstring
+print newstring
 end
 
 
 
-encrypt("abc")
-encrypt("zed")
-decrypt("bcd")
-decrypt("afe")
 
+puts encrypt("abc")
+puts encrypt("zed")
+puts decrypt("bcd")
+puts decrypt("afe")
+
+puts decrypt(encrypt("swordfish"))
