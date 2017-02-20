@@ -72,14 +72,21 @@ def get_input(h)
   return h
 end
 
+
 #DRIVER CODE
+
+#print welcome message
 puts "Welcome to the Interior Designer's Helper 3000"
 puts ""
-puts "Please enter the following:"
+puts "Please enter the following client data:"
+
+# call method to walk the designer through inputing data about the client
 get_input(client)
+
+#call method to print out the hash as a summary for review
 summarize(client)
 
-=begin
+#Ask the designer if they want to make a single change
 puts "Would you like to make changes to one of the values? (enter 'none' to exit)"
 if gets.chomp == 'none'
   puts "Thanks for using the Interior Designer's Helper 3000"
@@ -87,8 +94,23 @@ else
   puts "What label would you like to change?"            #need to get the index of the particular label, to know what data type
   key = gets.chomp
   puts "What is the new value for #{key}?"
-  client[key.to_sym] = gets.chomp
+  value = gets.chomp
+  
+  #figure out proper data type and then write correct data type to hash for the correct symbol
+  if key == "name" || key == "decor_theme"   #data types are strings and don't need to be converted.
+    client[key.to_sym] = value
+  elsif key == "age" || key == "number_of_children"    #data types are integers, so input string is converted to integer
+    client[key.to_sym] = value.to_i
+  elsif key == "budget"                                #data type is float, so convert input string to float
+    client[key.to_sym] = value.to_f
+  elsif value == "true"               #only booleans remain, so set value to true or false.
+    client[key.to_sym] = true
+  else
+    client[key.to_sym] = false
+  end
+summarize(client)
 end
-=end
+
+      
 
 
