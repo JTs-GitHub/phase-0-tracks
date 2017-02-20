@@ -28,10 +28,31 @@ h = {
   premium_status: "nil"            #boolean
 }
 
-
-
-
-
 #DRIVER CODE
+puts "Welcome to the Interior Designer's Helper 3000"
+puts ""
+
+puts "Please enter the following:"
+puts ""
+
+# no input validation or error checking at this time. 
+puts "Client name?"
+h[:name] = gets.chomp
+puts "Client's age in years?"
+h[:age] = gets.chomp
+puts "number of children ('0' if none)?"
+h[:number_of_children] = gets.chomp
+puts "Type of decor desired?"
+h[:decor_theme] = gets.chomp
+puts "Anticipated budget?"
+h[:budget] = gets.chomp
+puts "Have you worked with this client before? (true or false)"
+h[:repeat_customer] = gets.chomp
+puts "Is this client one of your PREMIUM clients? (true or false)"
+h[:premium_status] = gets.chomp
+
+
+#get input from designer.  note, no validation code (yet)
+
 p h
-puts h.length
+
