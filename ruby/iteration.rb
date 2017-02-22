@@ -21,43 +21,68 @@ puts "and now we are after the block and method call"   #debug
 #RELEASE 1 code .each, .map, and .map!
 
 
+
+=begin 
+   # commenting out array methods to make way for hash methods.
 todo_list = [ "grocery shopping" , "dry cleaning" , "fill car with gas" , "take out trash", "pick up kids from school" ]  
 
+
+    #DRIVER CODE 
+
+    # .each sample code for an array
+    puts "Now doing .each method"
+    todo_list.each do |task|
+      task = task + "..."          #add an ellipsis to each item in the array
+      puts task
+    end
+    p todo_list                    #verify the array was or wasn't changed.
+
+
+    # .map sample code for an array
+    puts
+    puts "Now doing [safe] map and creating new array"
+    new_array = todo_list.map do |task|
+      puts task                           #show item before modificatin
+      task = task + "."                   # add a period to each item in the array
+    end
+    p todo_list                              # verify unchanged array
+    p new_array                              # verify new array  has the added period on each item.
+
+    # .map! sample code for an array
+    puts
+    puts "Now doing dangerous map"
+    p todo_list
+    todo_list.map! do |task|                        #show item before modificatin
+      task = task + "---"                   # add 3 hyphens to each item in the array
+    end
+    p todo_list                              # verify changed array
+=end
+
 famous_opens = {
-  moby_dick: "Call me Ishmael." ,
-  tale_of_two_cities: "It was the best of times..." ,
-  slaughterhouse_five: "All this happened, more or less." ,
-  the_invisible_man: "I am an invisible man."
+    moby_dick: "Call me Ishmael." ,
+    tale_of_two_cities: "It was the best of times..." ,
+    slaughterhouse_five: "All this happened, more or less." ,
+    the_invisible_man: "I am an invisible man."
 }
 
-#DRIVER CODE 
-
-# .each sample code for an array
-puts "Now doing .each method"
-todo_list.each do |task|
-  task = task + "..."          #add an ellipsis to each item in the array
-  puts task
+p famous_opens                                                        # original hash
+puts "Now doing .each on the hash table's values to add elipsis"      
+famous_opens.each do |book, opening_verse|
+  puts "#{opening_verse}..."                                          # print out each value plus added ellipsis
 end
-p todo_list                    #verify the array was or wasn't changed.
+p famous_opens                                                        # debug, expect unchanged hash
+puts                                                                  # debug spacing
 
-
-# .map sample code for an array
+p famous_opens                                                         #original hash
 puts
-puts "Now doing [safe] map and creating new array"
-new_array = todo_list.map do |task|
-  puts task                           #show item before modificatin
-  task = task + "."                   # add a period to each item in the array
+puts "Now doing .map on the hash table's values"
+h = famous_opens.map do |book, opening_verse|                          # .map method call on hash, expect new array returned to h with changed values.
+  puts "#{opening_verse} ..."
+  opening_verse = opening_verse + "     <guess the book title>"
 end
-p todo_list                              # verify unchanged array
-p new_array                              # verify new array  has the added period on each item.
+p famous_opens                                                         #print hash, expect unchanged
+puts                                             
+puts h                                                                    # print new array with changed values 
 
-# .map! sample code for an array
-puts
-puts "Now doing dangerous map"
-p todo_list
-todo_list.map! do |task|                        #show item before modificatin
-  task = task + "---"                   # add 3 hyphens to each item in the array
-end
-p todo_list                              # verify changed array
 
 
