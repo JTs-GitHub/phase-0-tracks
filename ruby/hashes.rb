@@ -92,9 +92,9 @@ if gets.chomp == 'none'
   puts "Thanks for using the Interior Designer's Helper 3000"
 else
   puts "What label would you like to change?"            #need to get the index of the particular label, to know what data type
-  key = gets.chomp
+  key = gets.chomp                                       #string version of symbol to change.
   puts "What is the new value for #{key}?"
-  value = gets.chomp
+  value = gets.chomp                                     #string version of value.  may need to convert type.
   
   #figure out proper data type and then write correct data type to hash for the correct symbol
   if key == "name" || key == "decor_theme"   #data types are strings and don't need to be converted.
