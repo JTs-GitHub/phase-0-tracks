@@ -44,3 +44,21 @@ tot_year_exp = {
         }
     ] 
 }
+
+#puts tot_year_exp[:misc_other][-1]
+#puts tot_year_exp.keys
+
+#tot_year_exp[:misc_other].each do |label|
+#  puts label
+#end
+
+
+puts "medicare is currently set as #{tot_year_exp[:annual][:taxes][:fed_taxes][:medicare]} %"
+if tot_year_exp[:annual][:taxes][:fed_taxes][:medicare] = "15"
+  tot_year_exp[:annual][:taxes][:fed_taxes][:medicare] = "1.5"            #change hash value of medicare from 15 to 1.5
+end
+puts "medicare is currently set as #{tot_year_exp[:annual][:taxes][:fed_taxes][:medicare]} %"       #check new value
+
+puts tot_year_exp[:misc_other][-1][:dinner]          #list out value for dinner symbol.
+puts tot_year_exp[:misc_other][-1]                   # access array, list its items, including the hash in the array.
+
