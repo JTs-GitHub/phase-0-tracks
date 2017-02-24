@@ -33,10 +33,6 @@ p find_index(a, i)
 
 --------------------------------------------------------
 
-=end
-
-
-
 
 #DEFINE METHODS
 def find_index(array, int_to_find)
@@ -73,11 +69,24 @@ a = [7,15,2,3,100,11,37]
 i = 3
 
 find_index(a, i)
+=end
+
 #-------------------------------------------------
 
 
+def fib_grow(int)
+  fib = [0,1] 
+  array_index = 2
+    while array_index < int
+    fib.push(fib[-2] + fib[-1])
+    array_index +=1
+    end
+  fib 
+end
 
-
+new_fib = fib_grow(100)
+p new_fib
+puts "last element is #{new_fib.last}"
 
 
 
