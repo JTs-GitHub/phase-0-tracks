@@ -21,15 +21,19 @@ i = 7
 p find_index(a, i)
 
 --------------------------------------------------------
-#pseudocode for insertion sort
+#pseudocode for bubble sort
 
-      for i ← 1 to length(A)
-          j ← i
-          while j > 0 and A[j-1] > A[j]
-              swap A[j] and A[j-1]
-              j ← j - 1
-          end while
-      end for
+make second, empty array
+while still elements in first array
+  first element == smallest
+  compare first element to next element
+  if second is smaller, make that new smallest
+  check next element 
+  until end of first array
+
+  push smallest onto second array
+  slice out element from first array
+end
 
 --------------------------------------------------------
 
@@ -69,7 +73,6 @@ a = [7,15,2,3,100,11,37]
 i = 3
 
 find_index(a, i)
-=end
 
 #-------------------------------------------------
 
@@ -87,8 +90,34 @@ end
 new_fib = fib_grow(100)
 p new_fib
 puts "last element is #{new_fib.last}"
+=end
+
+=begin 
+------------------------------------
+#pseudocode for bubble sort
+
+make second, empty array
+while still elements in first array
+  find smallest element in first array
+  push that value to end of second array
+  find index of that element in first array
+  delete element out of first array
+  print out new, sorted array
 
 
 
+=end
+
+
+a = [47,15,20,23,100,11,37,11]
+b = []
+
+indx = 0 
+while a.length != 0 
+  b.push(a.min)
+  idx_to_delete =  a.index(a.min)
+  a.delete_at(idx_to_delete)
+end 
+puts "The sorted array is #{b}"
 
 
