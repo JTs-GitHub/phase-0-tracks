@@ -33,14 +33,53 @@ end
 
 
 #DRIVER CODE
+=begin
 
-fido = Puppy.new
-fido.fetch("doll")
+  fido = Puppy.new
+  fido.fetch("doll")
 
-fido.speak(3)
-fido.roll_over
-fido.dog_years(5)
-fido.eats_homework
+  fido.speak(3)
+  fido.roll_over
+  fido.dog_years(5)
+  fido.eats_homework
+
+=end
+
+class Car
+
+  def initialize
+    p "Initializing new car smell ..."
+  end
+
+  def honk(duration)
+    puts "the horn honked for #{duration} seconds"
+  end
+
+  def accellerating
+    puts "the car is speeding UP! "
+  end
+
+end
+
+#betty = Car.new
+#betty.honk(5)
+#betty.accellerating
+
+car_list = []
+
+count = 0
+until count == 50
+  car_list << Car.new 
+  count += 1
+end
+
+car_list.each do |car|
+  car.honk(2)
+  car.accellerating 
+end
+
+p car_list 
+
 
 
 
