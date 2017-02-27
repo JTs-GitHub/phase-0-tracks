@@ -21,29 +21,12 @@ class Puppy
     p 7 * human_years
   end
 
-  def new_trick()
-    #new trick stuff  
-  end
-
   def eats_homework
     p "puppy has eaten homework"
   end
-
 end
 
 
-#DRIVER CODE
-=begin
-
-  fido = Puppy.new
-  fido.fetch("doll")
-
-  fido.speak(3)
-  fido.roll_over
-  fido.dog_years(5)
-  fido.eats_homework
-
-=end
 
 class Car
 
@@ -61,12 +44,25 @@ class Car
 
 end
 
+#DRIVER CODE
+=begin
+
+  fido = Puppy.new
+  fido.fetch("doll")
+
+  fido.speak(3)
+  fido.roll_over
+  fido.dog_years(5)
+  fido.eats_homework
+
+=end
+
+
 #betty = Car.new
 #betty.honk(5)
 #betty.accellerating
 
 car_list = []
-
 count = 0
 until count == 50
   car_list << Car.new 
@@ -77,11 +73,3 @@ car_list.each do |car|
   car.honk(2)
   car.accellerating 
 end
-
-p car_list 
-
-
-
-
-
-
