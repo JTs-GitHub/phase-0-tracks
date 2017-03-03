@@ -31,15 +31,16 @@ class Santa
   end
 
   # setter methods 
-  def celebrate_birthday
-    puts "Happy Birthday!"
-    @age = age + 1
+  def celebrate_birthday=(years)
+    puts "Happy Birthday number #{years}!"
+    @age = years 
   end
 
   def get_mad_at=(raindeer_name)
-    @deer_ranking.delete(raindeer_name)           #remove it from whereever it is
+    puts "old deer ranking was #{@deer_ranking}"
+    @deer_ranking.delete(raindeer_name)           #remove it from wherever it is
     @deer_ranking << raindeer_name
-    puts @deer_ranking
+    puts "New deer ranking is #{@deer_ranking}"
   end
 
   def new_gender=(gender)
@@ -61,12 +62,12 @@ santas = []
 #end   
 bill = Santa.new("m", "x")
 puts "age is #{bill.age}"
-bill.celebrate_birthday
+bill.celebrate_birthday = 3
 puts "age is now #{bill.age}"
 puts "gender is #{bill.gender}"
-puts "Bill is changing his gender to #{bill.new_gender=('self choice')}"
+puts "Bill is changing his gender to #{bill.new_gender='self choice'}"
 puts "gender is now #{bill.gender}"
-bill.get_mad_at=("Dasher")
+bill.get_mad_at = "Dasher"
 
 
 
