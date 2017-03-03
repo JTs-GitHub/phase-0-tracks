@@ -5,7 +5,7 @@ class Santa
 
   def initialize (gender, ethnicity)
     p "Initializing santa instance ..."
-    @age = 0
+    @age = rand(140)
     @gender = gender
     @ethnicity = ethnicity
     @deer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
@@ -31,32 +31,28 @@ class Santa
     puts "New deer ranking is #{@deer_ranking}"
   end
 
-
 end
 
 santas = []
 #DRIVER CODE
 
-#example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
-#example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
-#example_genders.length.times do |i|
-#  santas << Santa.new(example_genders[rand(example_genders.length)], example_ethnicities[rand(example_ethnicities.length)])    #random gender, random ethnicity
-#end   
-bill = Santa.new("m", "x")
+example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
+example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
+10.times do |i|
+  santas << Santa.new(example_genders[rand(example_genders.length)], example_ethnicities[rand(example_ethnicities.length)])    #random gender, random ethnicity
+end
 
+=begin 
+bill = Santa.new("m", "x")
 puts "age is #{bill.age}"
 bill.celebrate_birthday = 3                                              #setter method using tradition equation
 puts "age is now #{bill.age}"
-
 puts "gender is #{bill.gender}"
 puts "Bill is changing his gender to #{bill.gender='self choice'}"       #setter method called within interpolation
 puts "gender is now #{bill.gender}"
-
 bill.get_mad_at = "Dasher"                                               #setter method using traditional equation
+=end 
 
-
-
-
-
-#now make 50 santas
-
+10.times do |i|
+  puts "gender is " + santas[i].gender + ",  and ethnicity is " + santas[i].ethnicity  + ",   and age is " + santas[i].age.to_s 
+end
