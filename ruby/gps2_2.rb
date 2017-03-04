@@ -15,8 +15,8 @@
 
 def create_list(starting_list)
   shopping_list = {}
-  arry = starting_list.split(' ')
-  arry.each { |i| shopping_list[i.to_s] = 1}
+  arry = starting_list.split(" ")
+  arry.each { |item_name| shopping_list[item_name] = 1}
   return shopping_list
 end
 
