@@ -25,27 +25,47 @@ end
 # input: list, item name, and optional quantity
 # steps:
 # Ask for input of item # 
-def add_item(list, item_name, quantiy=1)
-  list[item_name] = quantiy
+def add_item(list, item_name, quantity=1)
+  list[item_name] = quantity
 end
 # output: hash with new item 
 
 # Method to remove an item from the list
-# input:
+# input: hash and key of item to remove
 # steps:
-# output:
+def remove_item(list, item_name)
+  list.delete(item_name)
+end
+# output: updated hash 
 
 # Method to update the quantity of an item
-# input:
+# input: list hash, item_name, integer representing new quantity
 # steps:
+def update_quantity(list, item_name, new_quantity)
+  list[item_name] = new_quantity
+end
 # output:
 
 # Method to print a list and make it look pretty
-# input:
+# input: list hash
 # steps:
-# output:
+def print_friendly_list(list)
+  puts 
+  puts "Shopping List:"
+  puts "----------------"
+  list.each {|key, value| puts "#{key} #{value}" }
+  puts 
+end
+# output: nil
 
 #DRIVER CODE
 shopping_list = create_list("carrots apples cereal pizza")
+p shopping_list
 add_item(shopping_list, "bread", 2)
 p shopping_list
+remove_item(shopping_list, "apples")
+p shopping_list
+update_quantity(shopping_list, "pizza", 4)
+p shopping_list
+print_friendly_list(shopping_list)
+
