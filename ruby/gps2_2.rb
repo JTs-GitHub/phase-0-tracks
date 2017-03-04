@@ -60,12 +60,11 @@ end
 
 #DRIVER CODE
 shopping_list = create_list("carrots apples cereal pizza")
-p shopping_list
-add_item(shopping_list, "bread", 2)
-p shopping_list
-remove_item(shopping_list, "apples")
-p shopping_list
-update_quantity(shopping_list, "pizza", 4)
-p shopping_list
+add_item(shopping_list, "Lemonade", 2)
+add_item(shopping_list, "Tomatoes", 3)
+add_item(shopping_list, "Onions", 1)
+add_item(shopping_list, "Ice Cream", 4)
+remove_item(shopping_list, "Lemonade")
+update_quantity(shopping_list, "Ice Cream", 1)
 print_friendly_list(shopping_list)
 
