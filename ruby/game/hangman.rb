@@ -24,8 +24,8 @@ Game is over, so deliver message
 
 =end
 class Hangman
-  attr_reader   :win , :wrong_letter_bank
-  attr_accessor :guesses, :game_over , :puzzle
+  attr_reader   :win 
+  attr_accessor :guesses, :game_over , :puzzle, :wrong_letter_bank
 
   def initialize(secret_word)
     @guesses = 26/2 - secret_word.chars.length
@@ -49,24 +49,30 @@ class Hangman
     else
       false
     end
+  end
 
   def letter_in_word
     # if letter is in secret word, return true
   end
 
-  def update(letter)
-    @puzzle# replace underscore with letter 
+  def update(letter, offset)
+   # @puzzle# replace underscore with letter 
+    @puzzle[offset] = letter
   end
 
   def game_over?
     @game_over = false
-    if @guesses <= 0
+    if @guesses <= 0                  #if no guesses left, game is over and didn't win
       @win = false
       true
-    elsif @puzzle.include("_")
+    elsif @puzzle.include?("_")        #else check if all underscores have been replaced with letters for the win.
       false
-      end
+    else
+      @win = true
+      true
+    end
   end
+
 end
 
 
@@ -75,7 +81,8 @@ end
 puts "Player 1, please enter your secret word"
 secret_word = gets.chomp
 puzzle = Hangman.new(secret_word)             #create blank puzzle from the secret word
-puts puzzle 
+puts
+
 while !puzzle.game_over?                       #check to see if game is over  (out of guesses or whole word solved)
   puts "Player 2, you have #{puzzle.guesses} guesses remaining."
   puts "Please guess a letter for the following puzzle:"
@@ -83,16 +90,24 @@ while !puzzle.game_over?                       #check to see if game is over  (o
   puzzle.display_puzzle    #
   puts 
   next_letter = gets.chomp
-  #if puzzle.already_guessed?(next_letter)
-  if puzzle.wrong_letter_bank.include(next_letter)              #assumes letter is either 1) already guessed   2) in secret word   3)a newly guessed wrong letter
+
+  if puzzle.wrong_letter_bank.include?(next_letter)              #assumes letter is either 1) already guessed   2) in secret word   3)a newly guessed wrong letter
     puts "you already guessed letter '#{next_letter}'"
-  elsif  secret_word.include(next_letter)                       # letter_in_secret_word
-    puzzle[secret_word.index(next_letter)] = next_letter        #place letter puzzle at proper point
+    puts "Try again"
+    puts
+  elsif  secret_word.include?(next_letter)                       # letter_in_secret_word
+    puts "good guess!"
+    letter_location = secret_word.index(next_letter)
+    puzzle.update(next_letter, letter_location)        #place letter puzzle at proper point
   else
-    wrong_letter_bank << next_letter                            #place letter in wrong letter array
-    puzzle.guesses -= 1                                         #decrement guess count
+    puzzle.wrong_letter_bank << next_letter                      #place letter in wrong letter array
+    puts "wrong guess..."
+    puzzle.guesses += -1                                         #decrement guess count
   end
-  
-  break
+
 end
-  
+if puzzle.win
+  puts "Congratulations!  You solved the word!"
+else
+  puts "Ouch!  You are out of guesses.  The word was '#{secret_word}'"
+end
