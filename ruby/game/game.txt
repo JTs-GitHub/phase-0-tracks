@@ -1,0 +1,27 @@
+pseudocode for guessing game
+
+
+Class SecretWord
+  number of wrong guesses remaining method
+  number of unguessed characters method
+  secret word array
+  solved characters so far array
+
+
+
+
+
+
+
+Get the secret word from the first person.
+Determine the number of wrong guesses allowed based on the size of the word.  (maybe (26/2 - word_size) for example)
+While there are still guesses available and the puzzle has unsolved letters
+  display underline characters for each unguessed letter, and the correctly guessed letters
+  ask the second player if they want to guess another letter
+  if they incorrectly guess a letter (and the guess hasn't been done before)
+    decrement the remaining wrong guesses
+  else confirm there is that letter
+Game is over, so deliver message 
+  If the puzzle has been solved, give congratulations message.
+  If the available guesses are all gone, give taunting message.
+
