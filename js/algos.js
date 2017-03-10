@@ -24,10 +24,10 @@ function findLongest(phrase_list) {
       longestIndex = i; 
     }
   }
-  return longestIndex ;
+  return phrase_list[longestIndex] ;
 }
 
-var phrases = ["long phrase", "longest phrase", "longer phrase", "tiny", "When in the course of human events..."]
+var phrases = ["long phrase", "longest phrase", "longer phrase", "When in the course of human events...", "tiny"]
 
-indexOfLongest = findLongest(phrases)
-console.log("the longest phrase is '" + phrases[indexOfLongest] + "'")
+//indexOfLongest = findLongest(phrases)
+console.log("the longest phrase is '" + findLongest(phrases) + "'")
