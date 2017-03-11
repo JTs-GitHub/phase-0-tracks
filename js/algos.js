@@ -48,8 +48,6 @@ Check each key/value pair in both objects to determine of they share AT LEAST ON
         If they are equal, your function is done and needs to return TRUE
         Otherwise, go get the next key in the loop
   If no matches found, return false
-*/
-//obj.values 
 
 function hasMatchingKeyValues(object1, object2) {
   var array1keys = Object.keys(object1);
@@ -74,3 +72,44 @@ if (hasMatchingKeyValues(object1, object2)) {
 } else {
     console.log("there was no match");
 }
+-------------------------------------------------------------------------------------------
+*/
+
+/*
+pseudocode of Release 2:  Generate Random Test Data
+------------------------
+create a function that takes an integer as an argument and creates that many arrays of random words
+For each word/array to be created
+  generate a random number of characters from 1-10
+  for each character, generate a random character
+
+
+
+*/
+
+function arrayBuilder(wordCount) {
+  wordArray = [];
+  for (j = 0; j < wordCount; j++) {
+    foo = randWord();
+    wordArray.push(foo);
+  }
+  return wordArray;
+}
+
+function randWord() {
+  alphabet = "abcdefghijklmnopqrstuvwxyz";
+  word = "";
+  letterCount = (Math.floor(Math.random() * 10)) + 1;   //random number from 1-10 characters long
+  for (i = 0; i < letterCount; i++) {
+   // letter = rand of alphabet
+   rand_alph = alphabet[Math.floor(Math.random() * 26)]
+   word = word + rand_alph;
+  }
+  return word ;
+}
+
+console.log(arrayBuilder(3));
+
+
+
+
