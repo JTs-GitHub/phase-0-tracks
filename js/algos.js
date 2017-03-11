@@ -11,7 +11,7 @@ While not at end of phrase list
   if at last phrase on list, exit while loop
   else go to top of while loop 
 Return longest word/phrase
-
+*/
 function findLongest(phrase_list) {
   var longestIndex = 0;
   var longestLength = 0;
@@ -25,6 +25,7 @@ function findLongest(phrase_list) {
   return phrase_list[longestIndex] ;
 }
 
+/*
 var phrases = ["long phrase", "longest phrase", "longer phrase", "When in the course of human events...", "tiny"]
 
 //indexOfLongest = findLongest(phrases)
@@ -89,9 +90,8 @@ For each word/array to be created
 
 function arrayBuilder(wordCount) {
   wordArray = [];
-  for (j = 0; j < wordCount; j++) {
-    foo = randWord();
-    wordArray.push(foo);
+  for (var j = 0; j < wordCount; j++) {
+    wordArray.push(randWord());
   }
   return wordArray;
 }
@@ -100,15 +100,19 @@ function randWord() {
   alphabet = "abcdefghijklmnopqrstuvwxyz";
   word = "";
   letterCount = (Math.floor(Math.random() * 10)) + 1;   //random number from 1-10 characters long
-  for (i = 0; i < letterCount; i++) {
-   // letter = rand of alphabet
+  for (var i = 0; i < letterCount; i++) {
    rand_alph = alphabet[Math.floor(Math.random() * 26)]
    word = word + rand_alph;
   }
   return word ;
 }
 
-console.log(arrayBuilder(3));
+for (var k = 1; k < 11; k++) {
+  wordArray = arrayBuilder(4);
+  console.log(k + ".  the array is, [" + wordArray + "]");
+  console.log("and the longest word is " + findLongest(wordArray));  
+  console.log("");
+}
 
 
 
