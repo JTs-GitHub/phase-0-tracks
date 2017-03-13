@@ -1,0 +1,333 @@
+Last login: Sun Mar 12 11:49:26 on ttys000
+Loading ~/.bash_profile a shell script that runs in every new terminal you open
+Logged in as jtstamps at Js-Mac-mini.local
+
+~ :> cd Desktop/dbc/devbootcamp/phase-0-tracks/databases/s
+sanctuary.db  solo_project/ 
+
+~ :> cd Desktop/dbc/devbootcamp/phase-0-tracks/databases/solo_project/
+
+solo_project (8thweek) :> ls
+Insurance.db           JTS schema for 8.3.jpg queries.txt
+
+solo_project (8thweek) :> subl queries.txt
+
+solo_project (8thweek) :> clear
+
+
+
+
+
+
+
+
+
+
+solo_project (8thweek) :> sqlite3 Insurance.db 
+SQLite version 3.14.0 2016-07-26 15:17:14
+Enter ".help" for usage hints.
+sqlite> select * from items
+   ...> ;
+1|tall dresser|1200|false|1
+2|short dresser|1100|false|1
+3|King Bed|1100|false|1
+4|Samsung TV|1100|true|1
+5|couch|1500|false|2
+6|love_seat|1300|false|2
+7|lazy_boy|800|false|2
+8|sectinal couch|1800|false|3
+9|Big Screen TV|2700|true|3
+10|Coffee Table|700|true|3
+11|Blue Ray player|200|true|3
+sqlite> .quit
+
+solo_project (8thweek) :> sqlite3 Insurance.db 
+SQLite version 3.14.0 2016-07-26 15:17:14
+Enter ".help" for usage hints.
+sqlite> select * from items;
+1|tall dresser|1200|false|1
+2|short dresser|1100|false|1
+3|King Bed|1100|false|1
+4|Samsung TV|1100|true|1
+5|couch|1500|false|2
+6|love_seat|1300|false|2
+7|lazy_boy|800|false|2
+8|sectinal couch|1800|false|3
+9|Big Screen TV|2700|true|3
+10|Coffee Table|700|true|3
+11|Blue Ray player|200|true|3
+sqlite> select * from rooms
+   ...> ;
+1|bedroom|300
+2|living room|300
+3|family room|400
+sqlite> .quit
+
+solo_project (8thweek) :> sqlite3 Insurance.db 
+SQLite version 3.14.0 2016-07-26 15:17:14
+Enter ".help" for usage hints.
+sqlite> .tables
+items  rooms
+sqlite> .quit
+
+solo_project (8thweek) :> sqlite3 Insurance.db 
+SQLite version 3.14.0 2016-07-26 15:17:14
+Enter ".help" for usage hints.
+sqlite> .tables
+items  rooms
+sqlite> select * from items
+   ...> ;
+1|tall dresser|1200|false|1
+2|short dresser|1100|false|1
+3|King Bed|1100|false|1
+4|Samsung TV|1100|true|1
+5|couch|1500|false|2
+6|love_seat|1300|false|2
+7|lazy_boy|800|false|2
+8|sectinal couch|1800|false|3
+9|Big Screen TV|2700|true|3
+10|Coffee Table|700|true|3
+11|Blue Ray player|200|true|3
+sqlite> select * from rooms;
+1|bedroom|300
+2|living room|300
+3|family room|400
+sqlite> UPDATE items SET value=3500 WHERE id=3;
+sqlite> select * from items, rooms WHERE items.in_room_id = rooms.id;
+1|tall dresser|1200|false|1|1|bedroom|300
+2|short dresser|1100|false|1|1|bedroom|300
+3|King Bed|3500|false|1|1|bedroom|300
+4|Samsung TV|1100|true|1|1|bedroom|300
+5|couch|1500|false|2|2|living room|300
+6|love_seat|1300|false|2|2|living room|300
+7|lazy_boy|800|false|2|2|living room|300
+8|sectinal couch|1800|false|3|3|family room|400
+9|Big Screen TV|2700|true|3|3|family room|400
+10|Coffee Table|700|true|3|3|family room|400
+11|Blue Ray player|200|true|3|3|family room|400
+sqlite> select items.name, items.value, rooms.name FROM items JOIN rooms ON items.in_room_id = rooms.id;
+tall dresser|1200|bedroom
+short dresser|1100|bedroom
+King Bed|3500|bedroom
+Samsung TV|1100|bedroom
+couch|1500|living room
+love_seat|1300|living room
+lazy_boy|800|living room
+sectinal couch|1800|family room
+Big Screen TV|2700|family room
+Coffee Table|700|family room
+Blue Ray player|200|family room
+sqlite> delete from items where name="Blue Ray player"
+   ...> ;
+sqlite> select * from items
+   ...> ;
+1|tall dresser|1200|false|1
+2|short dresser|1100|false|1
+3|King Bed|3500|false|1
+4|Samsung TV|1100|true|1
+5|couch|1500|false|2
+6|love_seat|1300|false|2
+7|lazy_boy|800|false|2
+8|sectinal couch|1800|false|3
+9|Big Screen TV|2700|true|3
+10|Coffee Table|700|true|3
+sqlite> .quit
+
+solo_project (8thweek *) :> 
+
+-----------------------------------------
+release 3
+-----------------------------------------
+
+sqlite> select items.name, items.value FROM items INNER JOIN rooms ON items.in_room_id = rooms.id;
+tall dresser|1200
+short dresser|1100
+King Bed|3900
+Samsung TV|1100
+couch|1500
+love_seat|1300
+lazy_boy|800
+sectinal couch|1800
+Big Screen TV|2700
+sqlite> select items.name, items.value FROM items INNER JOIN rooms ON items.in_room_id = 1;
+King Bed|3900
+Samsung TV|1100
+short dresser|1100
+tall dresser|1200
+King Bed|3900
+Samsung TV|1100
+short dresser|1100
+tall dresser|1200
+King Bed|3900
+Samsung TV|1100
+short dresser|1100
+tall dresser|1200
+sqlite> select items.name, items.value, rooms.name FROM items INNER JOIN rooms ON items.in_room_id = 1;
+King Bed|3900|bedroom
+Samsung TV|1100|bedroom
+short dresser|1100|bedroom
+tall dresser|1200|bedroom
+King Bed|3900|living room
+Samsung TV|1100|living room
+short dresser|1100|living room
+tall dresser|1200|living room
+King Bed|3900|family room
+Samsung TV|1100|family room
+short dresser|1100|family room
+tall dresser|1200|family room
+sqlite> select items.name, items.value, rooms.name FROM items INNER JOIN rooms ON rooms.in_room_id = 1;
+Error: no such column: rooms.in_room_id
+sqlite> select items.name, items.value, rooms.name FROM items INNER JOIN rooms ON items.in_room_id = 1;
+King Bed|3900|bedroom
+Samsung TV|1100|bedroom
+short dresser|1100|bedroom
+tall dresser|1200|bedroom
+King Bed|3900|living room
+Samsung TV|1100|living room
+short dresser|1100|living room
+tall dresser|1200|living room
+King Bed|3900|family room
+Samsung TV|1100|family room
+short dresser|1100|family room
+tall dresser|1200|family room
+sqlite> select items.name, items.value, items.in_room_id FROM items INNER JOIN rooms ON items.in_room_id = 1;
+King Bed|3900|1
+Samsung TV|1100|1
+short dresser|1100|1
+tall dresser|1200|1
+King Bed|3900|1
+Samsung TV|1100|1
+short dresser|1100|1
+tall dresser|1200|1
+King Bed|3900|1
+Samsung TV|1100|1
+short dresser|1100|1
+tall dresser|1200|1
+sqlite> select items.name, items.value, items.in_room_id FROM items INNER JOIN rooms ON items.in_room_id = 2;
+couch|1500|2
+lazy_boy|800|2
+love_seat|1300|2
+couch|1500|2
+lazy_boy|800|2
+love_seat|1300|2
+couch|1500|2
+lazy_boy|800|2
+love_seat|1300|2
+sqlite> select * from items
+   ...> ;
+1|tall dresser|1200|false|1
+2|short dresser|1100|false|1
+3|King Bed|3900|false|1
+4|Samsung TV|1100|true|1
+5|couch|1500|false|2
+6|love_seat|1300|false|2
+7|lazy_boy|800|false|2
+8|sectinal couch|1800|false|3
+9|Big Screen TV|2700|true|3
+sqlite> select items.name from items LEFT [OUTER] JOIN rooms ON items.id = rooms.id;
+Error: unknown or unsupported join type: LEFT [OUTER]
+sqlite> select items.name from items LEFT JOIN rooms ON items.id = rooms.id;
+tall dresser
+short dresser
+King Bed
+Samsung TV
+couch
+love_seat
+lazy_boy
+sectinal couch
+Big Screen TV
+sqlite> select items.name from items LEFT JOIN rooms ON items.name = "King Bed";
+tall dresser
+short dresser
+King Bed
+King Bed
+King Bed
+Samsung TV
+couch
+love_seat
+lazy_boy
+sectinal couch
+Big Screen TV
+sqlite> INSERT INTO rooms (name, size) VALUES ("kitchen", 150);
+sqlite> INSERT INTO rooms (name, size) VALUES ("Dining Room", 190);
+sqlite> INSERT INTO rooms (name, size) VALUES ("Garage", 226);
+sqlite> select * from rooms;
+1|bedroom|300
+2|living room|300
+3|family room|400
+4|kitchen|150
+5|Dining Room|190
+6|Garage|226
+
+sqlite> select items.name, items.value FROM items INNER JOIN rooms ON items.in_room_id = rooms.id;
+tall dresser|1200
+short dresser|1100
+King Bed|3900
+Samsung TV|1100
+couch|1500
+love_seat|1300
+lazy_boy|800
+sectinal couch|1800
+Big Screen TV|2700
+
+
+
+sqlite> select * from items CROSS JOIN rooms;
+1|tall dresser|1200|false|1|1|bedroom|300
+1|tall dresser|1200|false|1|2|living room|300
+1|tall dresser|1200|false|1|3|family room|400
+1|tall dresser|1200|false|1|4|kitchen|150
+1|tall dresser|1200|false|1|5|Dining Room|190
+1|tall dresser|1200|false|1|6|Garage|226
+2|short dresser|1100|false|1|1|bedroom|300
+2|short dresser|1100|false|1|2|living room|300
+2|short dresser|1100|false|1|3|family room|400
+2|short dresser|1100|false|1|4|kitchen|150
+2|short dresser|1100|false|1|5|Dining Room|190
+2|short dresser|1100|false|1|6|Garage|226
+3|King Bed|3900|false|1|1|bedroom|300
+3|King Bed|3900|false|1|2|living room|300
+3|King Bed|3900|false|1|3|family room|400
+3|King Bed|3900|false|1|4|kitchen|150
+3|King Bed|3900|false|1|5|Dining Room|190
+3|King Bed|3900|false|1|6|Garage|226
+4|Samsung TV|1100|true|1|1|bedroom|300
+4|Samsung TV|1100|true|1|2|living room|300
+4|Samsung TV|1100|true|1|3|family room|400
+4|Samsung TV|1100|true|1|4|kitchen|150
+4|Samsung TV|1100|true|1|5|Dining Room|190
+4|Samsung TV|1100|true|1|6|Garage|226
+5|couch|1500|false|2|1|bedroom|300
+5|couch|1500|false|2|2|living room|300
+5|couch|1500|false|2|3|family room|400
+5|couch|1500|false|2|4|kitchen|150
+5|couch|1500|false|2|5|Dining Room|190
+5|couch|1500|false|2|6|Garage|226
+6|love_seat|1300|false|2|1|bedroom|300
+6|love_seat|1300|false|2|2|living room|300
+6|love_seat|1300|false|2|3|family room|400
+6|love_seat|1300|false|2|4|kitchen|150
+6|love_seat|1300|false|2|5|Dining Room|190
+6|love_seat|1300|false|2|6|Garage|226
+7|lazy_boy|800|false|2|1|bedroom|300
+7|lazy_boy|800|false|2|2|living room|300
+7|lazy_boy|800|false|2|3|family room|400
+7|lazy_boy|800|false|2|4|kitchen|150
+7|lazy_boy|800|false|2|5|Dining Room|190
+7|lazy_boy|800|false|2|6|Garage|226
+8|sectinal couch|1800|false|3|1|bedroom|300
+8|sectinal couch|1800|false|3|2|living room|300
+8|sectinal couch|1800|false|3|3|family room|400
+8|sectinal couch|1800|false|3|4|kitchen|150
+8|sectinal couch|1800|false|3|5|Dining Room|190
+8|sectinal couch|1800|false|3|6|Garage|226
+9|Big Screen TV|2700|true|3|1|bedroom|300
+9|Big Screen TV|2700|true|3|2|living room|300
+9|Big Screen TV|2700|true|3|3|family room|400
+9|Big Screen TV|2700|true|3|4|kitchen|150
+9|Big Screen TV|2700|true|3|5|Dining Room|190
+9|Big Screen TV|2700|true|3|6|Garage|226
+sqlite> .q
+
+solo_project (8thweek *) :> 
+
