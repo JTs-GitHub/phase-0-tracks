@@ -1,0 +1,136 @@
+Last login: Sun Mar 12 11:49:26 on ttys000
+Loading ~/.bash_profile a shell script that runs in every new terminal you open
+Logged in as jtstamps at Js-Mac-mini.local
+
+~ :> cd Desktop/dbc/devbootcamp/phase-0-tracks/databases/s
+sanctuary.db  solo_project/ 
+
+~ :> cd Desktop/dbc/devbootcamp/phase-0-tracks/databases/solo_project/
+
+solo_project (8thweek) :> ls
+Insurance.db           JTS schema for 8.3.jpg queries.txt
+
+solo_project (8thweek) :> subl queries.txt
+
+solo_project (8thweek) :> clear
+
+
+
+
+
+
+
+
+
+
+solo_project (8thweek) :> sqlite3 Insurance.db 
+SQLite version 3.14.0 2016-07-26 15:17:14
+Enter ".help" for usage hints.
+sqlite> select * from items
+   ...> ;
+1|tall dresser|1200|false|1
+2|short dresser|1100|false|1
+3|King Bed|1100|false|1
+4|Samsung TV|1100|true|1
+5|couch|1500|false|2
+6|love_seat|1300|false|2
+7|lazy_boy|800|false|2
+8|sectinal couch|1800|false|3
+9|Big Screen TV|2700|true|3
+10|Coffee Table|700|true|3
+11|Blue Ray player|200|true|3
+sqlite> .quit
+
+solo_project (8thweek) :> sqlite3 Insurance.db 
+SQLite version 3.14.0 2016-07-26 15:17:14
+Enter ".help" for usage hints.
+sqlite> select * from items;
+1|tall dresser|1200|false|1
+2|short dresser|1100|false|1
+3|King Bed|1100|false|1
+4|Samsung TV|1100|true|1
+5|couch|1500|false|2
+6|love_seat|1300|false|2
+7|lazy_boy|800|false|2
+8|sectinal couch|1800|false|3
+9|Big Screen TV|2700|true|3
+10|Coffee Table|700|true|3
+11|Blue Ray player|200|true|3
+sqlite> select * from rooms
+   ...> ;
+1|bedroom|300
+2|living room|300
+3|family room|400
+sqlite> .quit
+
+solo_project (8thweek) :> sqlite3 Insurance.db 
+SQLite version 3.14.0 2016-07-26 15:17:14
+Enter ".help" for usage hints.
+sqlite> .tables
+items  rooms
+sqlite> .quit
+
+solo_project (8thweek) :> sqlite3 Insurance.db 
+SQLite version 3.14.0 2016-07-26 15:17:14
+Enter ".help" for usage hints.
+sqlite> .tables
+items  rooms
+sqlite> select * from items
+   ...> ;
+1|tall dresser|1200|false|1
+2|short dresser|1100|false|1
+3|King Bed|1100|false|1
+4|Samsung TV|1100|true|1
+5|couch|1500|false|2
+6|love_seat|1300|false|2
+7|lazy_boy|800|false|2
+8|sectinal couch|1800|false|3
+9|Big Screen TV|2700|true|3
+10|Coffee Table|700|true|3
+11|Blue Ray player|200|true|3
+sqlite> select * from rooms;
+1|bedroom|300
+2|living room|300
+3|family room|400
+sqlite> UPDATE items SET value=3500 WHERE id=3;
+sqlite> select * from items, rooms WHERE items.in_room_id = rooms.id;
+1|tall dresser|1200|false|1|1|bedroom|300
+2|short dresser|1100|false|1|1|bedroom|300
+3|King Bed|3500|false|1|1|bedroom|300
+4|Samsung TV|1100|true|1|1|bedroom|300
+5|couch|1500|false|2|2|living room|300
+6|love_seat|1300|false|2|2|living room|300
+7|lazy_boy|800|false|2|2|living room|300
+8|sectinal couch|1800|false|3|3|family room|400
+9|Big Screen TV|2700|true|3|3|family room|400
+10|Coffee Table|700|true|3|3|family room|400
+11|Blue Ray player|200|true|3|3|family room|400
+sqlite> select items.name, items.value, rooms.name FROM items JOIN rooms ON items.in_room_id = rooms.id;
+tall dresser|1200|bedroom
+short dresser|1100|bedroom
+King Bed|3500|bedroom
+Samsung TV|1100|bedroom
+couch|1500|living room
+love_seat|1300|living room
+lazy_boy|800|living room
+sectinal couch|1800|family room
+Big Screen TV|2700|family room
+Coffee Table|700|family room
+Blue Ray player|200|family room
+sqlite> delete from items where name="Blue Ray player"
+   ...> ;
+sqlite> select * from items
+   ...> ;
+1|tall dresser|1200|false|1
+2|short dresser|1100|false|1
+3|King Bed|3500|false|1
+4|Samsung TV|1100|true|1
+5|couch|1500|false|2
+6|love_seat|1300|false|2
+7|lazy_boy|800|false|2
+8|sectinal couch|1800|false|3
+9|Big Screen TV|2700|true|3
+10|Coffee Table|700|true|3
+sqlite> .quit
+
+solo_project (8thweek *) :> 
