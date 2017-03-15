@@ -1,0 +1,67 @@
+RELEASE 2 OF MODULE 8.4
+
+2. You've joined two tables before. How do you join three?
+
+    select *  from reviews INNER JOIN businesses  INNER JOIN users;
+
+        1|3|OK for simple weddings|1|2|1|Grundy Hollow Wedding Chapel|1|Bradford|Pitt
+        1|3|OK for simple weddings|1|2|1|Grundy Hollow Wedding Chapel|2|Mandy|Kaling
+        1|3|OK for simple weddings|1|2|1|Grundy Hollow Wedding Chapel|3|Angela|Jolie
+        1|3|OK for simple weddings|1|2|2|Amir's Towing|1|Bradford|Pitt
+        1|3|OK for simple weddings|1|2|2|Amir's Towing|2|Mandy|Kaling
+        1|3|OK for simple weddings|1|2|2|Amir's Towing|3|Angela|Jolie
+        1|3|OK for simple weddings|1|2|3|The Beagle Nightclub|1|Bradford|Pitt
+        1|3|OK for simple weddings|1|2|3|The Beagle Nightclub|2|Mandy|Kaling
+        1|3|OK for simple weddings|1|2|3|The Beagle Nightclub|3|Angela|Jolie
+        2|5|Brad says 'Super Fast service'|2|1|1|Grundy Hollow Wedding Chapel|1|Bradford|Pitt
+        2|5|Brad says 'Super Fast service'|2|1|1|Grundy Hollow Wedding Chapel|2|Mandy|Kaling
+        2|5|Brad says 'Super Fast service'|2|1|1|Grundy Hollow Wedding Chapel|3|Angela|Jolie
+        2|5|Brad says 'Super Fast service'|2|1|2|Amir's Towing|1|Bradford|Pitt
+        2|5|Brad says 'Super Fast service'|2|1|2|Amir's Towing|2|Mandy|Kaling
+        2|5|Brad says 'Super Fast service'|2|1|2|Amir's Towing|3|Angela|Jolie
+        2|5|Brad says 'Super Fast service'|2|1|3|The Beagle Nightclub|1|Bradford|Pitt
+        2|5|Brad says 'Super Fast service'|2|1|3|The Beagle Nightclub|2|Mandy|Kaling
+        2|5|Brad says 'Super Fast service'|2|1|3|The Beagle Nightclub|3|Angela|Jolie
+        3|4|try the water!|3|3|1|Grundy Hollow Wedding Chapel|1|Bradford|Pitt
+        3|4|try the water!|3|3|1|Grundy Hollow Wedding Chapel|2|Mandy|Kaling
+        3|4|try the water!|3|3|1|Grundy Hollow Wedding Chapel|3|Angela|Jolie
+        3|4|try the water!|3|3|2|Amir's Towing|1|Bradford|Pitt
+        3|4|try the water!|3|3|2|Amir's Towing|2|Mandy|Kaling
+        3|4|try the water!|3|3|2|Amir's Towing|3|Angela|Jolie
+        3|4|try the water!|3|3|3|The Beagle Nightclub|1|Bradford|Pitt
+        3|4|try the water!|3|3|3|The Beagle Nightclub|2|Mandy|Kaling
+        3|4|try the water!|3|3|3|The Beagle Nightclub|3|Angela|Jolie
+        4|5|I plan to have my next wedding here|1|3|1|Grundy Hollow Wedding Chapel|1|Bradford|Pitt
+        4|5|I plan to have my next wedding here|1|3|1|Grundy Hollow Wedding Chapel|2|Mandy|Kaling
+        4|5|I plan to have my next wedding here|1|3|1|Grundy Hollow Wedding Chapel|3|Angela|Jolie
+        4|5|I plan to have my next wedding here|1|3|2|Amir's Towing|1|Bradford|Pitt
+        4|5|I plan to have my next wedding here|1|3|2|Amir's Towing|2|Mandy|Kaling
+        4|5|I plan to have my next wedding here|1|3|2|Amir's Towing|3|Angela|Jolie
+        4|5|I plan to have my next wedding here|1|3|3|The Beagle Nightclub|1|Bradford|Pitt
+        4|5|I plan to have my next wedding here|1|3|3|The Beagle Nightclub|2|Mandy|Kaling
+        4|5|I plan to have my next wedding here|1|3|3|The Beagle Nightclub|3|Angela|Jolie
+
+
+
+
+3. There are some repetitive columns if we choose to view all fields. Choose instead to just 
+   view the user's names, the business name, the star rating, and the comment.
+
+    select users.first_name, users.last_name, businesses.name, reviews.stars, reviews.comment from ((reviews INNER JOIN businesses ON reviews.business_id = businesses.id) INNER JOIN users ON reviews.user_id = users.id);
+
+        Mandy|Kaling|Grundy Hollow Wedding Chapel|3|OK for simple weddings
+        Bradford|Pitt|Amir's Towing|5|Brad says 'Super Fast service'
+        Angela|Jolie|The Beagle Nightclub|4|try the water!
+        Angela|Jolie|Grundy Hollow Wedding Chapel|5|I plan to have my next wedding here
+
+4. How do you view the data of all three tables for just one particular business? 
+
+    sqlite> select users.first_name, users.last_name, businesses.name, reviews.stars, reviews.comment from ((reviews INNER JOIN businesses ON businesses.id = 1) INNER JOIN users ON reviews.user_id = users.id);
+
+        Mandy|Kaling|Grundy Hollow Wedding Chapel|3|OK for simple weddings
+        Bradford|Pitt|Grundy Hollow Wedding Chapel|5|Brad says 'Super Fast service'
+        Angela|Jolie|Grundy Hollow Wedding Chapel|4|try the water!
+        Angela|Jolie|Grundy Hollow Wedding Chapel|5|I plan to have my next wedding here
+
+
+
