@@ -1,12 +1,17 @@
 # OPERATION Serendipity
 
+#########################
+# THIS RUBY FILE contains code for creating the database, and instantiating it with some fake names and some random locations around the SF area. 
+#########################
+
+
 # require gems
 require 'sqlite3'
 require 'faker'
 require 'haversine'
 
 # create SQLite3 database
-db = SQLite3::Database.new("serendipity_members.db")
+db = SQLite3::Database.new("serendipity.db")
 # db.results_as_hash = true    # kept around for reference if I want to turn table into a hash
 
 # fancy string delimiters
@@ -18,6 +23,9 @@ create_table_cmd = <<-SQL
     latitude  REAL
   )
 SQL
+#db = SQLite3::Database.open('sreendipity.db')
+
+
 
 # add member to database.
 def create_member(db, name, longitude, latitude)
@@ -48,7 +56,7 @@ end
 
 # test updating member location as a one off.
 # rand_mem_numb = 100     # 1-100 integer equates to member number
-# rand_long = -47.0       # current range  -122.36 to -122.5  (hunters point to pac ocean)
+# rand_long = -47.0       # current range  -122.36 to -122.5  (hunters point to pacific ocean)
 # rand_lat = 47.0         # current range  37.7 to 37.8    (outer mission to golden gate)
 
 
@@ -97,7 +105,7 @@ end
 #----------------------------------------------------------
 #seed db list with unique-ish names and identical locations
 #100.times do
-#  create_member(db, Faker::Name.name, -122.397194, 37.784517)          
+#  create_member(db, Faker::Name.name, -122.397194, 37.784517)   #initialize with fixed location of DBC office       
 #end
 
 
