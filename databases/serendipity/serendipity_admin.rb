@@ -58,6 +58,7 @@ end
 
 # simplest db includes at least the core serendipity_members table, so create at startup.
 db.execute(new_table ("serendipity_members"))   
+
 puts ("      ****************************")
 puts ("      *                          *")
 puts ("      *    SERENDIPITY 2017      *       Welcome to the 'Serendipity 2017' administrative program.")
@@ -65,6 +66,7 @@ puts ("      *                          *")
 puts ("      ****************************")
 puts
 puts
+
 while true
   puts  
   puts ("Please select an administrative function")
@@ -96,10 +98,7 @@ while true
       create_member(db, table_name, Faker::Name.name, -122.397194, 37.784517)   #initialize with fixed location of DBC office
     end
   elsif admin_choice == 'q'
-    # puts
-    # tables = db.execute(".tables;")
-    # p tables 
-    # puts ("Thanks for using Serendipity 2017")
+    puts ("Thanks for using Serendipity 2017")
     break
   end
 end 
