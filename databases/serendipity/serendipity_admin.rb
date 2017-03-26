@@ -106,7 +106,7 @@ while true
       p user[1]
     end
   elsif admin_choice == 'q'
-    puts ("Thanks for using Serendipity 2017")
+    print_exit_banner
     break
   end
 end 

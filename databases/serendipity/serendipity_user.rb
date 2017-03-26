@@ -62,9 +62,9 @@ while true
   at_least_one_near = false
   threshold = 2000
   other_members.each do |other_member| 
-    distance = Haversine.distance(other_member[1], other_member[2], current_user[0]['longitude'], current_user[0]['latitude'])   #find distance between other members, and current user.
+    distance = Haversine.distance(other_member['longitude'], other_member['latitude'], current_user[0]['longitude'], current_user[0]['latitude'])   #find distance between other members, and current user.
     if (distance.to_feet < threshold)
-      puts ("     GREAT NEWS , #{other_member[0]} is less than #{threshold} feet away!")
+      puts ("GREAT NEWS , #{other_member[0]} is less than #{threshold} feet away!")
       at_least_one_near = true
     end
   end
@@ -79,7 +79,7 @@ while true
     update_member_location(db, current_user_num, rand_long, rand_lat)     #update with random location to simulate new location.
     current_user = db.execute("SELECT id, name, longitude, latitude FROM serendipity_members WHERE id=#{current_user_num} ;") 
   elsif user_choice == 'q'
-    puts ("     Thanks for using Serendipity 2017")
+    print_exit_banner
     break
   end
 end 

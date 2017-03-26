@@ -12,7 +12,6 @@ def print_admin_banner
   puts
 end
 
-
 # banner for user program
 def print_user_banner
   puts
@@ -31,5 +30,13 @@ def print_user_banner
   puts ("     event, or on the same BART, or at a coffee shop just down the street...")
   puts ("     In the near future, you can be part of multiple groups, each one notifying")
   puts ("     you and them of your proximity.")
+  puts 
+end
+
+def print_exit_banner
+  puts 
+  puts ("     ***************************************")
+  puts ("     *  Thanks for using Serendipity 2017  *")
+  puts ("     ***************************************")
   puts 
 end
