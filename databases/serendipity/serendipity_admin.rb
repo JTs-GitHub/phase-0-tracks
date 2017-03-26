@@ -69,23 +69,24 @@ print_admin_banner
 
 while true
   puts  
-  puts ("Please select an administrative function")
-  puts ("from the following choices: ")
+  puts ("     Please select an administrative function")
+  puts ("     from the following choices: ")
   puts
-  puts (" 'v'   to view existing tables")
-  puts (" 't'   to create a new table")
-  puts (" 'p'   to populate a table with data")
-  puts (" 'q'   to quit")
+  puts ("      't'   to view existing tables")
+  puts ("      'n'   to create a new table")
+  puts ("      'p'   to populate a table with data")
+  puts ("      'v'   to view members of a table")
+  puts ("      'q'   to quit")
   puts
   admin_choice = gets.chomp
   puts 
-  if admin_choice == 'v'
+  if admin_choice == 't'
     puts ("    The existing tables are;")
     tables = db.execute "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;"
     tables.each do |table_name|
-        puts ("      #{table_name}")
+      puts table_name
     end
-  elsif admin_choice == 't' 
+  elsif admin_choice == 'n' 
     puts "name of table to create?"
     new_table_name = gets.chomp
     db.execute(new_table (new_table_name))
@@ -96,6 +97,13 @@ while true
     table_size = gets.chomp.to_i
     table_size.times do
       create_member(db, table_name, Faker::Name.name, -122.397194, 37.784517)   #initialize with fixed location of DBC office
+    end
+  elsif admin_choice == 'v'
+    puts ("enter the table you wish to view...?")
+    table_name = gets.chomp
+    members = db.execute "SELECT * from #{table_name}"
+    members.each do |user|
+      p user[1]
     end
   elsif admin_choice == 'q'
     puts ("Thanks for using Serendipity 2017")

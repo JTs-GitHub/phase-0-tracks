@@ -1,6 +1,8 @@
 
-# banner for admin program 
+# banner for serendipity admin and user programs, and to try "require relative" syntax.
+
 def print_admin_banner
+  puts
   puts ("      ****************************")
   puts ("      *                          *")
   puts ("      *    SERENDIPITY 2017      *       Welcome to the 'Serendipity 2017' administrative program.")
@@ -13,9 +15,10 @@ end
 
 # banner for user program
 def print_user_banner
+  puts
   puts ("      ****************************")
   puts ("      *                          *")
-  puts ("      *    SERENDIPITY 2017      *       the social networking program that gives 'chance' a slightly higher profile.")
+  puts ("      *    SERENDIPITY 2017      *       the social networking program that gives 'chance' a chance.")
   puts ("      *                          *")
   puts ("      ****************************")
   puts
