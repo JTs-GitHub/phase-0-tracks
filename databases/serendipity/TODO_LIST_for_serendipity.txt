@@ -1,0 +1,15 @@
+TODO LIST for serendipity
+
+-Add user membership to multiple tables/groups simultanously.
+-Connect location update methods to all member tables (e.g. when you change your location, every member list you belong to rechecks proximity)
+-Enhance random methods to be bounded by the number of members of each table.
+-Make DRY the updating of user location. currently, its once at login, and exact same code when changing locatino from menu.
+-Make "threshold" user setable.
+-Add different thresholds by table/group.
+-Add nearest_member(s) methods.
+-Add time as a 3rd dimension with the ability to see who from the group might have been closes to you within some period of time (e.g. subway platform) but without name.
+-Add user signup (probably in admin)
+-Allow users to join existing groups (or possibly via admin)
+-Add admin ability to delete members from one or all tables.
+-Allow users to withdraw from tables.
+-allow 'offline' status of users, perhaps user setable (or by table so that family can be 24 hr, but dating can be from 5pm to 10pm)
