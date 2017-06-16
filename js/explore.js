@@ -15,5 +15,9 @@ function reverse(str) {
   return newStr
 }
 
-reverse("hello")
-console.log(newStr);
+reverse("hidden_bill");
+if (3 >5) {
+  console.log(newStr)
+} else {
+  console.log("failed conditional test")
+}

@@ -84,7 +84,7 @@ puzzle = Hangman.new(secret_word)             #create blank puzzle from the secr
 puts
 
 while !puzzle.game_over?                       #check to see if game is over  (out of guesses or whole word solved)
-  puts "Player 2, you have #{puzzle.guesses} guesses remaining."
+  puts "Player 2, you have #{puzzle.guesses} wrong guesses remaining."
   puts "Please guess a letter for the following puzzle:"
   puts
   puzzle.display_puzzle    #
@@ -94,7 +94,7 @@ while !puzzle.game_over?                       #check to see if game is over  (o
     puts "you already guessed letter '#{next_letter}'"
     puts "Try again"
     puts
-  elsif  secret_word.include?(next_letter)                       # letter is new and in secret_word
+  elsif  secret_word.include?(next_letter)                       # letter is new so check if in secret_word
     puts "good guess!"
     puzzle.update(secret_word, next_letter)                         # update puzzle with all instances of the correct letter
   else                                                           # must be bad guess
