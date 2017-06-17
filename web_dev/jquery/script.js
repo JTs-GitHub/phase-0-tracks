@@ -1,4 +1,4 @@
-console.log("The script is running, and its running WELL!");
+if(jQuery) alert('jQuery is loaded');
 
 function addPinkBorder(event) {
   console.log("click happened! here's the click event:");
@@ -35,3 +35,6 @@ button1.addEventListener("click", blendButton);
 
 var button2 = document.getElementById("buttonReveal");
 button2.addEventListener("click", showButton);
+
+//trying some jquery in this javascript file
+$("#lizard-photo").attr("src","lizard-shadow.jpeg");
