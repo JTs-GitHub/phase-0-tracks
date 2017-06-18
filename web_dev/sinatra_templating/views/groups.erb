@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>List of students in the Seattle cohort</title>
+</head>
+<body>
+  <% last_campus = ""%>
+  <% @students.each do |student| %>
+    <%if student['campus'] != last_campus%>
+      <h3> <%= student['campus'] %> </h3>
+    <% else %>
+      <li> <%=student['name'] %>, <%= student['age'] %></li>
+    <% end %>
+    <% last_campus = student['campus'] %>
+  <% end %>
+</body>
+</html>
