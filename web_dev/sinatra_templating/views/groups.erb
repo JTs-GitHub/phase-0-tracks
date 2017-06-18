@@ -7,10 +7,10 @@
   <% last_campus = ""%>
   <% @students.each do |student| %>
     <%if student['campus'] != last_campus%>
+      <p>---------------------------------------</p>
       <h3> <%= student['campus'] %> </h3>
-    <% else %>
-      <li> <%=student['name'] %>, <%= student['age'] %></li>
     <% end %>
+    <li> <%=student['name'] %>, <%= student['age'] %></li>
     <% last_campus = student['campus'] %>
   <% end %>
 </body>
